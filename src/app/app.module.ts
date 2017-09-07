@@ -1,10 +1,11 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpModule} from "@angular/http";
+import { HttpModule} from '@angular/http';
 import { NgModule } from '@angular/core';
-import { routing } from "./app.routing";
+import { routing } from './app.routing';
 import { AppComponent } from './app.component';
 import { AllUsersComponent } from './admin/users/all-users/all-users.component';
 import { UserComponent } from './admin/users/user/user.component';
+import {UserService} from './user.services';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,7 @@ import { UserComponent } from './admin/users/user/user.component';
       routing,
       HttpModule
   ],
-  providers: [],
+  providers: [UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
