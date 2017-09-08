@@ -3,7 +3,7 @@
         <h1>Users</h1>
     </div>
     <div class="panel-body">
-        <button type="button" (click)="onGetUsers()" name="button" class="btn btn-default">Get Users</button>
-        <app-user *ngFor="let user of users"></app-user>
+        <!--<button type="button" (click)="onGetUsers()" name="button" class="btn btn-default">Get Users</button>-->
+        <app-user *ngFor="let user of users" [user]="user"></app-user>
     </div>
 </div>
