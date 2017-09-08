@@ -1,0 +1,9 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h1>Posts</h1>
+  </div>
+  <div class="panel-body">
+    <!--<button type="button" (click)="onGetUsers()" name="button" class="btn btn-default">Get Users</button>-->
+    <app-post *ngFor="let post of posts" [post]="post"></app-post>
+  </div>
+</div>
