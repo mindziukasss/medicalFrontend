@@ -25,7 +25,7 @@ export class UserService {
                password: string,
                role_id: number) {
         const token = this.authService.getToken();
-        return this.http.post('http://medicback.dev/api/users/signin?token=' + token,
+        return this.http.post('http://medicback.dev/api/users?token=' + token,
             {
                 first_name: first_name,
                 last_name: last_name,
