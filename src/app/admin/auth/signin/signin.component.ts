@@ -15,13 +15,13 @@ export class SigninComponent implements OnInit {
 
     ngOnInit() {
         if(this.authService.getToken()){
-            this.router.navigate(['admin/dashboard']);
+            this.router.navigate(['admin']);
         }
     }
 
     onSignin(form: NgForm){
         this.authService.signin(form.value.email, form.value.password).subscribe(
-            response => this.router.navigate(['admin/dashboard']),
+            response => this.router.navigate(['admin']),
             error => console.log(error)
         );
     }

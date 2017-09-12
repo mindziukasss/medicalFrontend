@@ -18,14 +18,26 @@ export class AuthService {
             (response: Response) => {
                 const token = response.json().token;
                 const base64Url = token.split('.')[1];
-                const base64 = base64Url.replace('-','+').replace('_','/');
-                return {token: token,decoded_token: JSON.parse(window.atob(base64))
+                const base64 = base64Url.replace('-', '+').replace('_', '/');
+                return {
+                    token: token, decoded_token: JSON.parse(window.atob(base64))
                 }
             }
         ).do(
-            tokenData => { localStorage.setItem('token',tokenData.token)}
+            tokenData => {
+                localStorage.setItem('token', tokenData.token)
+            }
         );
-    } getToken(){
+    }
+
+    getToken() {
         return localStorage.getItem('token');
+    }
+
+    isLoggedIn() {
+        if (localStorage.getItem('token')) {
+            return true;
+        }
+        return false;
     }
 }
