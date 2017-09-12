@@ -1,9 +1,28 @@
 <div class="panel panel-default">
     <div class="panel-heading">
-        <h1>Users</h1>
+        <h4>Users</h4>
+        <div class="add-button-top pull-right">
+            <button type="button" class="btn btn-default" routerLink="../users-add" name="button">Add user</button>
+        </div>
     </div>
     <div class="panel-body">
-        <!--<button type="button" (click)="onGetUsers()" name="button" class="btn btn-default">Get Users</button>-->
-        <app-user *ngFor="let user of users" [user]="user"></app-user>
+        <!--&lt;!&ndash;<button type="button" (click)="onGetUsers()" name="button" class="btn btn-default">Get Users</button>&ndash;&gt;-->
+        <!--<app-user *ngFor="let user of users" [user]="user"></app-user>-->
+        <!--</div>-->
+        <table class="table">
+            <tr>
+                <th>Name</th>
+                <th>Surname</th>
+                <th>Email</th>
+                <th>Position</th>
+                <th>Actions</th>
+            </tr>
+            <tr *ngFor="let user of users">
+                <td>{{user.first_name}}</td>
+                <td>{{user.last_name}}</td>
+                <td>{{user.email}}</td>
+                <td>{{user.position}}</td>
+                <td>Edit | Delete</td>
+        </table>
     </div>
 </div>
