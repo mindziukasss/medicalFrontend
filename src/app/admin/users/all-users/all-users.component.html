@@ -22,7 +22,9 @@
                 <td>{{user.last_name}}</td>
                 <td>{{user.email}}</td>
                 <td>{{user.position}}</td>
-                <td>Edit | Delete</td>
+                <td>Edit |
+                  <a href="#" (click)="deleteUser(user.id)">Delete</a>
+                </td>
         </table>
     </div>
 </div>
