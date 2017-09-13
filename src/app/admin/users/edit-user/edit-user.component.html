@@ -1,3 +1,40 @@
-<p>
-  edit-user works!
-</p>
+<div class="col-md-8 col-md-offset-2">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      Edit user
+    </div>
+    <div class="panel-body">
+      <form (ngSubmit)="onUpdate(f)" #f="ngForm">
+        <div class="form-group">
+          <label for="first_name">First name</label>
+          <input type="text" name="first_name" id="first_name" class="form-control" [(ngModel)]="user.first_name">
+        </div>
+        <div class="form-group">
+          <label for="last_name">Last name</label>
+          <input type="text" name="last_name" id="last_name" class="form-control" [(ngModel)]="user.last_name">
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="text" name="email" id="email" class="form-control" [(ngModel)]="user.email">
+        </div>
+        <div class="form-group">
+          <label for="position">Position</label>
+          <input type="text" name="position" id="position" class="form-control" [(ngModel)]="user.position">
+        </div>
+        <div class="form-group">
+          <label for="role_id">Role:</label>
+          <select class="form-control" id="role_id" name="role_id" [(ngModel)]="user.role_id">
+            <option value="" disabled>Select role</option>
+            <option value="1">Moderator</option>
+            <option value="2">Admin</option>
+            <option value="3">Doctor</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <button type="submit" class="btn btn-success"
+                  name="button" [disabled]="!f.valid">Update user</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
