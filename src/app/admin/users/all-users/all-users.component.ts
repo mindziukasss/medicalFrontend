@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {User} from '../../../user.interface';
 import {UserService} from '../../../user.services';
 import {Response} from '@angular/http';
+import {subscribeOn} from "rxjs/operator/subscribeOn";
 
 @Component({
     selector: 'app-all-users',
@@ -22,10 +23,18 @@ export class AllUsersComponent implements OnInit {
         );
     }
 
-    deleteUser(id: any) {
-        var result = confirm('Are you sure?');
+    onDelete(user: any) {
+        const result = confirm('Are you sure?');
         if (result) {
-            this.userService.deleteUser(id);
+            const index = this.users.indexOf(user);
+            this.users.splice(index, 1);
+
+            this.userService.deleteUser(user.id)
+            .subscribe(null,
+                error => {
+                    alert('could not delete user.');
+                    this.users.splice(index, 0, user);
+                });
         }
     }
 

@@ -11,6 +11,7 @@
         <!--</div>-->
         <table class="table">
             <tr>
+                <th>ID</th>
                 <th>Name</th>
                 <th>Surname</th>
                 <th>Email</th>
@@ -18,12 +19,13 @@
                 <th>Actions</th>
             </tr>
             <tr *ngFor="let user of users">
+                <td>{{user.id}}</td>
                 <td>{{user.first_name}}</td>
                 <td>{{user.last_name}}</td>
                 <td>{{user.email}}</td>
                 <td>{{user.position}}</td>
                 <td>Edit |
-                  <a href="#" (click)="deleteUser(user.id)">Delete</a>
+                  <button (click)="onDelete(user)">Delete</button>
                 </td>
         </table>
     </div>
