@@ -3,6 +3,8 @@ import {Http, Response, Headers} from '@angular/http';
 import 'rxjs/Rx';
 import {Observable} from 'rxjs';
 import {AuthService} from './auth.service';
+import {Post} from './post.interface';
+
 
 
 @Injectable()
@@ -20,7 +22,7 @@ export class PostService {
 
     createPost(user_id: string,
                title: string,
-               text: string,) {
+               text: string) {
         const token = this.authService.getToken();
         return this.http.post('http://medicback.dev/api/posts?token=' + token,
             {
@@ -34,6 +36,26 @@ export class PostService {
             (response: Response) => {
                 return true;
             }
+        );
+    }
+
+    getPost(id: any): Observable<any> {
+        const token = this.authService.getToken();
+        return this.http.get('http://medicback.dev/api/posts/' + id + '?token=' + token)
+            .map(
+                (response: Response) => {
+                    return response.json().user;
+                }
+            );
+    }
+
+    updatePost(post: Post) {
+        const token = this.authService.getToken();
+        return this.http.put('http://medicback.dev/api/posts/' + post.id + '?token=' + token,
+            JSON.stringify(post),
+            {headers: new Headers({'Content-type': 'application/json'})}
+        ).map(
+            (response: Response) => response.json()
         );
     }
 

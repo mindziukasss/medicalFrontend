@@ -19,7 +19,7 @@
                 <td>{{post.text}}</td>
                 <td>{{post.user_id}}</td>
                 <td>
-                    <button>Edit</button>
+                    <button [routerLink]="['../edit-post', {id:post.id}]">Edit</button>
                 </td>
                 <td>
                     <button (click)="onDelete(post)">Delete</button>
