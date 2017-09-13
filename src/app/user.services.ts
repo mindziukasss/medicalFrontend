@@ -44,6 +44,13 @@ export class UserService {
     }
 
     updateUser(user: User) {
+        const token = this.authService.getToken();
+        return this.http.put('http://medicback.dev/api/users/' + user.id + '?token=' + token,
+            JSON.stringify(user),
+            {headers: new Headers({'Content-type': 'application/json'})}
+        ).map(
+            (response: Response) => response.json()
+        );
     }
 
     deleteUser(id: any) {
