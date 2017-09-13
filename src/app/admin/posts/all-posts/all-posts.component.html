@@ -1,9 +1,29 @@
 <div class="panel panel-default">
-  <div class="panel-heading">
-    <h1>Posts</h1>
-  </div>
-  <div class="panel-body">
-    <!--<button type="button" (click)="onGetUsers()" name="button" class="btn btn-default">Get Users</button>-->
-    <app-post *ngFor="let post of posts" [post]="post"></app-post>
-  </div>
+    <div class="panel-heading">
+        <h4>Posts</h4>
+        <div class="add-button-top pull-right">
+            <button type="button" class="btn btn-default" routerLink="../posts-add" name="button">Add post</button>
+        </div>
+    </div>
+    <div class="panel-body">
+        <!--<button type="button" (click)="onGetUsers()" name="button" class="btn btn-default">Get Users</button>-->
+        <!--<app-post *ngFor="let post of posts" [post]="post"></app-post>-->
+        <table class="table">
+            <tr>
+                <th>Title</th>
+                <th>Text</th>
+                <th>User_id</th>
+            </tr>
+            <tr *ngFor="let post of posts">
+                <td>{{post.title}}</td>
+                <td>{{post.text}}</td>
+                <td>{{post.user_id}}</td>
+                <td>
+                    <button>Edit</button>
+                </td>
+                <td>
+                    <button>Delete</button>
+                </td>
+        </table>
+    </div>
 </div>
