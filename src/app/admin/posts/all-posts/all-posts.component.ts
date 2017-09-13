@@ -23,4 +23,19 @@ export class AllPostsComponent implements OnInit {
         );
     }
 
+    onDelete(post: any) {
+        const result = confirm('Are you sure?');
+        if (result) {
+            const index = this.posts.indexOf(post);
+            this.posts.splice(index, 1);
+
+            this.postService.deletePost(post.id)
+                .subscribe(null,
+                    error => {
+                        alert('could not delete user.');
+                        this.posts.splice(index, 0, post);
+                    });
+        }
+    }
+
 }

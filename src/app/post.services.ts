@@ -19,9 +19,8 @@ export class PostService {
     }
 
     createPost(user_id: string,
-                title: string,
-               text: string,
-               ) {
+               title: string,
+               text: string,) {
         const token = this.authService.getToken();
         return this.http.post('http://medicback.dev/api/posts?token=' + token,
             {
@@ -37,4 +36,10 @@ export class PostService {
             }
         );
     }
+
+    deletePost(id: any) {
+        const token = this.authService.getToken();
+        return this.http.delete('http://medicback.dev/api/posts/' + id + '?token=' + token);
+    }
+
 }
