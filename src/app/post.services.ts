@@ -44,7 +44,7 @@ export class PostService {
         return this.http.get('http://medicback.dev/api/posts/' + id + '?token=' + token)
             .map(
                 (response: Response) => {
-                    return response.json().user;
+                    return response.json().post;
                 }
             );
     }
