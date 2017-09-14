@@ -2,12 +2,13 @@ import {Injectable} from '@angular/core';
 import {Http, Response, Headers} from '@angular/http';
 import 'rxjs/Rx';
 import {Observable} from 'rxjs';
-import {AuthService} from './auth.service';
-import {User} from './user.interface';
+import {AuthService} from '../../auth.service';
+import {User} from './user';
+
 
 
 @Injectable()
-export class UserService {
+export class UsersService {
     constructor(private http: Http, private authService: AuthService) {
 
     }
@@ -19,22 +20,10 @@ export class UserService {
         });
     }
 
-    createUser(first_name: string,
-               last_name: string,
-               email: string,
-               position: string,
-               password: string,
-               role_id: number) {
+    createUser(user) {
         const token = this.authService.getToken();
         return this.http.post('http://medicback.dev/api/users?token=' + token,
-            {
-                first_name: first_name,
-                last_name: last_name,
-                email: email,
-                position: position,
-                password: password,
-                role_id: role_id
-            },
+            user,
             {headers: new Headers({'X-Requested-With': 'XMLHttpRequest'})}
         ).map(
             (response: Response) => {
@@ -43,10 +32,10 @@ export class UserService {
         );
     }
 
-    updateUser(user: User) {
+    updateUser(user) {
         const token = this.authService.getToken();
         return this.http.put('http://medicback.dev/api/users/' + user.id + '?token=' + token,
-            JSON.stringify(user),
+            user,
             {headers: new Headers({'Content-type': 'application/json'})}
         ).map(
             (response: Response) => response.json()
