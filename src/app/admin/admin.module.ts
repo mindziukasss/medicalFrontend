@@ -17,6 +17,7 @@ import {CommonModule} from '@angular/common';
         NavBarComponent,
         SigninComponent,
         DashboardComponent,
+
     ],
     imports: [
         CommonModule,

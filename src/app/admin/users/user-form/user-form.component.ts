@@ -43,7 +43,6 @@ export class UserFormComponent implements OnInit {
         });
     }
 
-    // kai uzsikrauna komponentas (konstruktorius suveikia pirmas, sitas antroj stadijoj) kviecia componento funkcija
 
     ngOnInit() {
         var id = this.activatedRoute.params.subscribe(params => {

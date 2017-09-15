@@ -2,7 +2,7 @@
     <div class="panel-heading">
         <h4>Posts</h4>
         <div class="add-button-top pull-right">
-            <button type="button" class="btn btn-default" routerLink="../posts-add" name="button">Add post</button>
+            <button type="button" class="btn btn-default" routerLink="/admin/posts/new" name="button">Add post</button>
         </div>
     </div>
     <div class="panel-body">
@@ -17,9 +17,8 @@
             <tr *ngFor="let post of posts">
                 <td>{{post.title}}</td>
                 <td>{{post.text}}</td>
-                <td>{{post.user_id}}</td>
                 <td>
-                    <button [routerLink]="['../edit-post', {id:post.id}]">Edit</button>
+                    <button [routerLink]="['/admin/posts', post.id]">Edit</button>
                 </td>
                 <td>
                     <button (click)="onDelete(post)">Delete</button>
