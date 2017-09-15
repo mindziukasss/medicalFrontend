@@ -12,6 +12,8 @@ import {UsersModule} from './admin/users/users.module';
 import {usersRouting} from './admin/users/users.routing';
 import {postsRouting} from './admin/posts/posts.routing';
 import {PostsModule} from './admin/posts/posts.module';
+import {RolesModule} from './admin/roles/roles.module';
+import {rolesRouting} from './admin/roles/roles.routing';
 
 
 
@@ -33,7 +35,9 @@ import {PostsModule} from './admin/posts/posts.module';
         UsersModule,
         usersRouting,
         PostsModule,
-        postsRouting
+        postsRouting,
+        RolesModule,
+        rolesRouting
     ],
     providers: [],
     bootstrap: [AppComponent]

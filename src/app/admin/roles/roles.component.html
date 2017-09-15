@@ -1,0 +1,25 @@
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h4>Roles</h4>
+        <div class="add-button-top pull-right">
+            <button type="button" class="btn btn-default" routerLink="/admin/roles/new" name="button">Add role</button>
+        </div>
+    </div>
+    <div class="panel-body">
+        <table class="table">
+            <tr>
+                <th>Name</th>
+            </tr>
+            <tr *ngFor="let role of roles">
+                <td>{{role.name}}</td>
+
+                <td>
+                    <button [routerLink]="['/admin/roles', role.id]">Edit</button>
+                </td>
+                <td>
+                    <button (click)="onDelete(role)">Delete</button>
+                </td>
+        </table>
+    </div>
+</div>
+
