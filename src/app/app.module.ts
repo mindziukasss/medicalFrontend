@@ -14,6 +14,7 @@ import {postsRouting} from './admin/posts/posts.routing';
 import {PostsModule} from './admin/posts/posts.module';
 import {RolesModule} from './admin/roles/roles.module';
 import {rolesRouting} from './admin/roles/roles.routing';
+import { MenuNavBarFrontendComponent } from './menu-nav-bar-frontend/menu-nav-bar-frontend.component';
 
 
 
@@ -22,6 +23,7 @@ import {rolesRouting} from './admin/roles/roles.routing';
         AppComponent,
         HomeComponent,
         NotFoundComponent,
+        MenuNavBarFrontendComponent,
 
     ],
     imports: [
