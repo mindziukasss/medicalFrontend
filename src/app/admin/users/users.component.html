@@ -12,6 +12,7 @@
         <table class="table">
             <tr>
                 <th>ID</th>
+                <th>Role</th>
                 <th>Name</th>
                 <th>Surname</th>
                 <th>Email</th>
@@ -20,6 +21,8 @@
             </tr>
             <tr *ngFor="let user of users">
                 <td>{{user.id}}</td>
+                <td>{{user.roles[0].name}}</td>
+                <!--<td><span *ngFor="let role of user.roles">{{role.name}}</span></td> many roles see-->
                 <td>{{user.first_name}}</td>
                 <td>{{user.last_name}}</td>
                 <td>{{user.email}}</td>

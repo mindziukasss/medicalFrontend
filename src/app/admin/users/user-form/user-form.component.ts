@@ -3,6 +3,8 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {User} from '../shared/user';
 import {ActivatedRoute, Router} from '@angular/router';
 import {UsersService} from '../shared/users.service';
+import {Role} from '../../roles/shared/role';
+import {RolesService} from '../../roles/shared/roles.service';
 
 @Component({
     selector: 'app-user-form',
@@ -14,12 +16,15 @@ export class UserFormComponent implements OnInit {
     form: FormGroup;
     title: string;
     user: User = new User();
+    roles: Role[] = [];
+
     showPassword: boolean;
 
     constructor(formBuilder: FormBuilder,
                 private router: Router,
                 private activatedRoute: ActivatedRoute,
-                private usersService: UsersService) {
+                private usersService: UsersService,
+                private rolesService: RolesService) {
         this.form = formBuilder.group({
             first_name: ['', [
                 Validators.required,
@@ -36,7 +41,7 @@ export class UserFormComponent implements OnInit {
             email: ['', [
                 Validators.required
             ]],
-            role_id: [''],
+            roles: [''],
             password: ['', [
                 Validators.required
             ]]
@@ -45,6 +50,11 @@ export class UserFormComponent implements OnInit {
 
 
     ngOnInit() {
+        this.rolesService.getRoles().subscribe(
+            roles => this.roles = roles,
+            (error: Response) => console.log(error)
+    );
+
         var id = this.activatedRoute.params.subscribe(params => {
             var id = params['id'];
             this.title = id ? 'Edit User' : 'New User';
@@ -54,11 +64,13 @@ export class UserFormComponent implements OnInit {
 
             this.usersService.getUser(id).subscribe(
                 user => this.user = user,
+                // role => this.role = role,
                 response => {
                     if (response.status === 404) {
                         this.router.navigate(['NotFound']);
                     }
                 });
+
         });
 
         if (this.router.url === '/admin/users/new') {

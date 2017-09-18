@@ -4,5 +4,6 @@ export class User{
     last_name: string;
     email: string;
     position: string;
-    role_id: string;
+    role_id: any;
+    roles: any;
 }

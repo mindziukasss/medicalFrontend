@@ -52,6 +52,8 @@ export class UsersService {
         return this.http.get('http://medicback.dev/api/users/' + id + '?token=' + token)
             .map(
                 (response: Response) => {
+
+                    // console.log(response.json().user);
                     return response.json().user;
                 }
             );
