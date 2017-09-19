@@ -1,10 +1,12 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {FormBuilder, FormGroup, Validators, FormsModule} from '@angular/forms';
 import {User} from '../shared/user';
 import {ActivatedRoute, Router} from '@angular/router';
 import {UsersService} from '../shared/users.service';
 import {Role} from '../../roles/shared/role';
 import {RolesService} from '../../roles/shared/roles.service';
+
+import {IMultiSelectOption} from 'angular-2-dropdown-multiselect';
 
 @Component({
     selector: 'app-user-form',
@@ -16,8 +18,8 @@ export class UserFormComponent implements OnInit {
     form: FormGroup;
     title: string;
     user: User = new User();
+    userRoles: string[] = [];
     roles: Role[] = [];
-
     showPassword: boolean;
 
     constructor(formBuilder: FormBuilder,
@@ -53,7 +55,7 @@ export class UserFormComponent implements OnInit {
         this.rolesService.getRoles().subscribe(
             roles => this.roles = roles,
             (error: Response) => console.log(error)
-    );
+        );
 
         var id = this.activatedRoute.params.subscribe(params => {
             var id = params['id'];
@@ -63,12 +65,18 @@ export class UserFormComponent implements OnInit {
                 return;
 
             this.usersService.getUser(id).subscribe(
-                user => this.user = user,
+                user => {
+                    this.user = user;
+                    for (var i = 0, length = this.user.roles.length; i < length; i++) {
+                        this.userRoles.push(this.user.roles[i].id.toString());
+                    }
+                },
                 // role => this.role = role,
                 response => {
                     if (response.status === 404) {
                         this.router.navigate(['NotFound']);
                     }
+
                 });
 
         });
@@ -76,6 +84,10 @@ export class UserFormComponent implements OnInit {
         if (this.router.url === '/admin/users/new') {
             this.showPassword = true;
         }
+    }
+
+    onChange(e: any) {
+        console.log(e);
     }
 
     onSave() {

@@ -7,6 +7,7 @@ import {CommonModule} from '@angular/common';
 import {AuthService} from '../auth.service';
 import {UsersService} from './shared/users.service';
 import {UserFormComponent} from './user-form/user-form.component';
+import {MultiselectDropdownModule} from 'angular-2-dropdown-multiselect';
 
 
 @NgModule({
@@ -20,6 +21,7 @@ import {UserFormComponent} from './user-form/user-form.component';
         ReactiveFormsModule,
         RouterModule,
         HttpModule,
+        MultiselectDropdownModule,
     ],
 
     exports: [

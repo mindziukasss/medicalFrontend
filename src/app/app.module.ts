@@ -15,6 +15,8 @@ import {PostsModule} from './admin/posts/posts.module';
 import {RolesModule} from './admin/roles/roles.module';
 import {rolesRouting} from './admin/roles/roles.routing';
 import { MenuNavBarFrontendComponent } from './menu-nav-bar-frontend/menu-nav-bar-frontend.component';
+import { BlogComponent } from './blog/blog.component';
+import { AboutComponent } from './about/about.component';
 
 
 
@@ -24,6 +26,8 @@ import { MenuNavBarFrontendComponent } from './menu-nav-bar-frontend/menu-nav-ba
         HomeComponent,
         NotFoundComponent,
         MenuNavBarFrontendComponent,
+        BlogComponent,
+        AboutComponent,
 
     ],
     imports: [
@@ -39,7 +43,7 @@ import { MenuNavBarFrontendComponent } from './menu-nav-bar-frontend/menu-nav-ba
         PostsModule,
         postsRouting,
         RolesModule,
-        rolesRouting
+        rolesRouting,
     ],
     providers: [],
     bootstrap: [AppComponent]
