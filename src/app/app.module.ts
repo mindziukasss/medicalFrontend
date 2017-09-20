@@ -14,10 +14,12 @@ import {postsRouting} from './admin/posts/posts.routing';
 import {PostsModule} from './admin/posts/posts.module';
 import {RolesModule} from './admin/roles/roles.module';
 import {rolesRouting} from './admin/roles/roles.routing';
-import { MenuNavBarFrontendComponent } from './menu-nav-bar-frontend/menu-nav-bar-frontend.component';
-import { BlogComponent } from './blog/blog.component';
-import { AboutComponent } from './about/about.component';
-
+import {MenuNavBarFrontendComponent} from './menu-nav-bar-frontend/menu-nav-bar-frontend.component';
+import {BlogComponent} from './blog/blog.component';
+import {AboutComponent} from './about/about.component';
+import {BlogPostComponent} from './blog/blog-post/blog-post.component';
+import {blogRouting} from './blog/blog.routing';
+import {BlogModule} from './blog/blog.module';
 
 
 @NgModule({
@@ -26,8 +28,8 @@ import { AboutComponent } from './about/about.component';
         HomeComponent,
         NotFoundComponent,
         MenuNavBarFrontendComponent,
-        BlogComponent,
         AboutComponent,
+        BlogPostComponent,
 
     ],
     imports: [
@@ -44,6 +46,9 @@ import { AboutComponent } from './about/about.component';
         postsRouting,
         RolesModule,
         rolesRouting,
+        BlogModule,
+        blogRouting,
+
     ],
     providers: [],
     bootstrap: [AppComponent]

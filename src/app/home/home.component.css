@@ -1,5 +1,5 @@
 
-.jumbotron {
+.home {
     background-image: url(http://www.medicalwebdesigns.co.uk/images/medical-web-designs.jpg);
     /*background-repeat: no-repeat;*/
     /*background-size: cover;*/
@@ -15,9 +15,15 @@
 
 }
 
-.about{
-    font-size: 90px;
-    color: #42b3e5;
-    margin-top: 50px;
-    text-align: center
+
+#text{
+
+    height: 10em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 70px;
 }
+
+
+
