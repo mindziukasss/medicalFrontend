@@ -1,1 +1,19 @@
+<div class="after">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <h1>Blog</h1>
+        </div>
+    </div>
+
+
+    <div class="row" >
+        <div class="col-md-8 col-md-offset-2" *ngFor="let post of posts">
+            <h2><a routerLink="{{post.id}}">{{ post.title }}</a></h2>
+            <p>{{post.text}}</p>
+            <hr>
+        </div>
+    </div>
+
+</div>
+
 
