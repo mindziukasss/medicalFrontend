@@ -21,8 +21,8 @@
             </tr>
             <tr *ngFor="let user of users">
                 <td>{{user.id}}</td>
-                <td>{{user.roles[0].name}}</td>
-                <!--<td><span *ngFor="let role of user.roles">{{role.name}}</span></td> many roles see-->
+                <!--<td >{{user.roles[0].name}}</td> show first role -->
+                <td><span *ngFor="let role of user.roles, let isLast=last">{{role.name}}{{isLast ? '' : ', '}}</span></td>
                 <td>{{user.first_name}}</td>
                 <td>{{user.last_name}}</td>
                 <td>{{user.email}}</td>
