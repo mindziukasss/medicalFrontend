@@ -4,10 +4,16 @@ import {UsersComponent} from './users.component';
 import {UserFormComponent} from './user-form/user-form.component';
 
 const usersRoutes: Routes = [
-    {path: 'admin/users', component: UsersComponent, pathMatch: 'full', canActivate: [AuthGuardService]},
-    {path: 'admin/users/new', component: UserFormComponent, canActivate: [AuthGuardService]},
-    {path: 'admin/users/:id', component: UserFormComponent, canActivate: [AuthGuardService]},
+    {
+        path: 'admin/users', component: UsersComponent,
+        children: [
 
+            {path: 'new', component: UserFormComponent},
+            {path: 'edit/:id', component: UserFormComponent},
+        ],
+        canActivate: [AuthGuardService]
+    },
+    // { path: '**' ,redirectTo: '/admin/users'}
 ];
 
 

@@ -1,35 +1,41 @@
-<div class="panel panel-default">
-    <div class="panel-heading">
-        <h4>Display {{ users.lenght }} <b>user(s).</b></h4>
-        <div class="add-button-top pull-right">
-            <button type="button" class="btn btn-default" routerLink="/admin/users/new" name="button">Add user</button>
+<div class="col-md-12">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4>Display {{ users.lenght }} <b>user(s).</b></h4>
+            <div class="add-button-top pull-right">
+                <button type="button" class="btn btn-default" routerLink="/admin/users/new" name="button">Add user</button>
+            </div>
+        </div>
+        <div class="panel-body">
+            <!--&lt;!&ndash;<button type="button" (click)="onGetUsers()" name="button" class="btn btn-default">Get Users</button>&ndash;&gt;-->
+            <!--<app-user *ngFor="let user of users" [user]="user"></app-user>-->
+            <!--</div>-->
+            <table class="table">
+                <tr>
+                    <th>ID</th>
+                    <th>Role</th>
+                    <th>Name</th>
+                    <th>Surname</th>
+                    <th>Email</th>
+                    <th>Position</th>
+                    <th>Actions</th>
+                </tr>
+                <tr *ngFor="let user of users">
+                    <td>{{user.id}}</td>
+                    <!--<td >{{user.roles[0].name}}</td> show first role -->
+                    <td><span *ngFor="let role of user.roles, let isLast=last">{{role.name}}{{isLast ? '' : ', '}}</span></td>
+                    <td>{{user.first_name}}</td>
+                    <td>{{user.last_name}}</td>
+                    <td>{{user.email}}</td>
+                    <td>{{user.position}}</td>
+                    <td><button [routerLink]="['edit', user.id]">Edit</button> |
+                      <button (click)="onDelete(user)">Delete</button>
+                    </td>
+            </table>
         </div>
     </div>
-    <div class="panel-body">
-        <!--&lt;!&ndash;<button type="button" (click)="onGetUsers()" name="button" class="btn btn-default">Get Users</button>&ndash;&gt;-->
-        <!--<app-user *ngFor="let user of users" [user]="user"></app-user>-->
-        <!--</div>-->
-        <table class="table">
-            <tr>
-                <th>ID</th>
-                <th>Role</th>
-                <th>Name</th>
-                <th>Surname</th>
-                <th>Email</th>
-                <th>Position</th>
-                <th>Actions</th>
-            </tr>
-            <tr *ngFor="let user of users">
-                <td>{{user.id}}</td>
-                <!--<td >{{user.roles[0].name}}</td> show first role -->
-                <td><span *ngFor="let role of user.roles, let isLast=last">{{role.name}}{{isLast ? '' : ', '}}</span></td>
-                <td>{{user.first_name}}</td>
-                <td>{{user.last_name}}</td>
-                <td>{{user.email}}</td>
-                <td>{{user.position}}</td>
-                <td><button [routerLink]="['/admin/users', user.id]">Edit</button> |
-                  <button (click)="onDelete(user)">Delete</button>
-                </td>
-        </table>
-    </div>
+</div>
+
+<div class="view-side-form">
+    <router-outlet></router-outlet>
 </div>

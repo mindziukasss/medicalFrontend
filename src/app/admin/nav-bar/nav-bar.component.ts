@@ -20,6 +20,7 @@ export class NavBarComponent implements OnInit {
         //     return true;
         // }
         // return false;
+        return this.authService.isLoggedIn();
     }
 
     onLogout() {
