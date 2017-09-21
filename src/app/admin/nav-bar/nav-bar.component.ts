@@ -16,10 +16,10 @@ export class NavBarComponent implements OnInit {
 
 
     isLoggedIn() {
-        if (localStorage.getItem('token')) {
-            return true;
-        }
-        return false;
+        // if (localStorage.getItem('token')) {
+        //     return true;
+        // }
+        // return false;
     }
 
     onLogout() {
