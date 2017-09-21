@@ -12,20 +12,29 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
-                <li><a  routerLink="/">Home</a></li>
+
+                <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" >
+                <a  routerLink="/">Home</a></li>
 
                 <li [routerLinkActive]="['active']">
                     <a routerLink="/about"> About </a>
                 </li>
 
-                <li><a href="#Contact">Contact</a></li>
+                <li [routerLinkActive]="['active']">
+                    <a routerLink="/contact"> Contact </a>
+                </li>
 
                 <li [routerLinkActive]="['active']">
                     <a routerLink="/blog"> Blog </a>
                 </li>
 
-                <li><a href="#Gallery">Gallery</a></li>
-                <li><a href="#Registration">Registration</a></li>
+                <li [routerLinkActive]="['active']">
+                    <a routerLink="/gallery"> Gallery </a>
+                </li>
+                
+                <li [routerLinkActive]="['active']">
+                    <a routerLink="/registration"> Registration </a>
+                </li>
             </ul>
         </div><!--/.nav-collapse -->
     </div>
