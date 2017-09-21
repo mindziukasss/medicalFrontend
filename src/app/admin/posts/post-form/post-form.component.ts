@@ -3,11 +3,14 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
 import {PostsService} from '../shared/posts.service';
 import {Post} from '../shared/post';
+import {slideInOutAnimation} from '../../../animations/animate';
 
 @Component({
     selector: 'app-post-form',
     templateUrl: './post-form.component.html',
-    styleUrls: ['./post-form.component.css']
+    styleUrls: ['./post-form.component.css'],
+    animations: [slideInOutAnimation],
+    host: {'[@slideInOutAnimation]': ''}
 })
 export class PostFormComponent implements OnInit {
 

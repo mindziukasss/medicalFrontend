@@ -1,23 +1,28 @@
-<div class="col-md-8 col-md-offset-2">
-  <div class="panel panel-default">
-    <div class="panel-heading">
-      <h4>{{title}}</h4>
+<div class="side-form">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4>{{title}}</h4>
+        </div>
+        <div class="panel-body">
+            <form [formGroup]="form" (ngSubmit)="onSave(f)" #f="ngForm">
+                <div class="form-group">
+                    <label for="title">Title</label>
+                    <input type="text" name="title" id="title" class="form-control" [(ngModel)]="post.title"
+                           formControlName="title">
+                </div>
+                <div class="form-group">
+                    <label for="text">Text</label>
+                    <textarea type="textarea" name="text" id="text" class="form-control" [(ngModel)]="post.text"
+                              formControlName="text"></textarea>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-success"
+                            name="button">{{title}}
+                    </button>
+                    <button type="button" class="btn btn-default" routerLink="/admin/posts" name="button">Back</button>
+
+                </div>
+            </form>
+        </div>
     </div>
-    <div class="panel-body">
-      <form [formGroup]="form" (ngSubmit)="onSave(f)" #f="ngForm">
-        <div class="form-group">
-          <label for="title">Title</label>
-          <input type="text" name="title" id="title" class="form-control" [(ngModel)]="post.title" formControlName="title">
-        </div>
-        <div class="form-group">
-          <label for="text">Text</label>
-          <textarea  type="textarea" name="text" id="text" class="form-control" [(ngModel)]="post.text" formControlName="text"></textarea>
-        </div>
-        <div class="form-group">
-          <button type="submit" class="btn btn-success"
-                  name="button">{{title}}</button>
-        </div>
-      </form>
-    </div>
-  </div>
 </div>
