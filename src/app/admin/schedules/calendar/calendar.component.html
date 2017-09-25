@@ -1,0 +1,54 @@
+<div class="slide-form">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4>{{user.first_name}}{{user?.last_name}}</h4>
+        </div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <h4>{{viewData | calendarDate:(view + 'ViewTitle'):'en'}}</h4>
+                </div>
+                <div class="col-md-6 text-right">
+                    <div class="form-group">
+                        <div class="btn-group">
+                            <div
+                                    class="btn btn-primary"
+                                    mwlCalendarPreviousView
+                                    [view]="view"
+                                    [(viewDate)]="viewDate">
+                                Previous
+                            </div>
+                            <div
+                                    class="btn btn-outline-secondary"
+                                    mwlCalendarToday
+                                    [(viewDate)]="viewDate">
+                                Today
+                            </div>
+                            <div
+                                    class="btn btn-primary"
+                                    mwlCalendarNextView
+                                    [view]="view"
+                                    [(viewDate)]="viewDate">
+                                Next
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="fourm-group">
+                    <mwl-calendar-month-view
+                        [viewDate] = "viewDate"
+                        [events] = "events">
+                    </mwl-calendar-month-view>
+                </div>
+
+
+
+                <div class="form-group">
+                    <button type="button" class="btn btn-default" routerLink="/admin/schedules">Back</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

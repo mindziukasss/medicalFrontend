@@ -12,11 +12,13 @@ import {AuthGuardService} from './auth-guard.service';
 import {CommonModule} from '@angular/common';
 
 
+
 @NgModule({
     declarations: [
         NavBarComponent,
         SigninComponent,
         DashboardComponent,
+
 
 
     ],
