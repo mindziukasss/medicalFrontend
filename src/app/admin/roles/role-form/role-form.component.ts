@@ -3,7 +3,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Role} from '../shared/role';
 import {ActivatedRoute, Router} from '@angular/router';
 import {RolesService} from '../shared/roles.service';
-
+import {AppService} from '../../../shared/app.service';
 
 @Component({
     selector: 'app-role-form',
@@ -19,7 +19,8 @@ export class RoleFormComponent implements OnInit {
     constructor(formBuilder: FormBuilder,
                 private router: Router,
                 private activatedRoute: ActivatedRoute,
-                private rolesService: RolesService) {
+                private rolesService: RolesService,
+                private appService: AppService) {
         this.form = formBuilder.group({
             name: ['', [
                 Validators.required,
@@ -60,7 +61,10 @@ export class RoleFormComponent implements OnInit {
         }
 
         result.subscribe(
-            role => this.router.navigate(['admin/roles']),
+            role => {
+                this.router.navigate(['admin/roles']);
+                this.appService.publish('roles-update');
+            },
             error => console.log(error)
         );
     }

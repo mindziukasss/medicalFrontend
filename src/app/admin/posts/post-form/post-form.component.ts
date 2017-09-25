@@ -4,6 +4,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {PostsService} from '../shared/posts.service';
 import {Post} from '../shared/post';
 import {slideInOutAnimation} from '../../../animations/animate';
+import {AppService} from '../../../shared/app.service';
 
 @Component({
     selector: 'app-post-form',
@@ -22,7 +23,8 @@ export class PostFormComponent implements OnInit {
     constructor(formBuilder: FormBuilder,
                 private router: Router,
                 private activatedRoute: ActivatedRoute,
-                private postsService: PostsService) {
+                private postsService: PostsService,
+                private appService: AppService) {
         this.form = formBuilder.group({
             title: ['', [
                 Validators.required,
@@ -67,7 +69,10 @@ export class PostFormComponent implements OnInit {
         }
 
         result.subscribe(
-            post => this.router.navigate(['admin/posts']),
+            post => {
+                this.router.navigate(['admin/posts']);
+                this.appService.publish('posts-update');
+            },
             error => console.log(error)
         );
     }

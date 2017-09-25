@@ -3,6 +3,8 @@ import {Response} from '@angular/http';
 import {UsersService} from './shared/users.service';
 import {User} from './shared/user';
 import {fadeInAnimation} from '../../animations/animate';
+import {Subscription} from 'rxjs/Subscription';
+import {AppService} from '../../shared/app.service';
 
 @Component({
     selector: 'app-users',
@@ -15,11 +17,26 @@ export class UsersComponent implements OnInit {
 
     private users: User[] = [];
 
-    constructor(private usersService: UsersService) {
+    subsciption: Subscription;
+
+    constructor(private usersService: UsersService, private appService: AppService) {
     }
 
     ngOnInit() {
-        this.usersService.getUsers().subscribe(
+
+        this.loadUsers();
+        this.subsciption = this.appService.on('users-update').subscribe(
+            () => this.loadUsers()
+        );
+
+        // this.usersService.getUsers().subscribe(
+        //     users => this.users = users,
+        //     (error: Response) => console.log(error)
+        // );
+    }
+
+    loadUsers() {
+        return this.usersService.getUsers().subscribe(
             users => this.users = users,
             (error: Response) => console.log(error)
         );

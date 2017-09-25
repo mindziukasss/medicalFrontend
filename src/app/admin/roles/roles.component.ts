@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {Response} from '@angular/http';
 import {Role} from './shared/role';
 import {RolesService} from './shared/roles.service';
+import {Subscription} from 'rxjs/Subscription';
+import {AppService} from '../../shared/app.service';
 
 @Component({
     selector: 'app-roles',
@@ -11,13 +13,26 @@ import {RolesService} from './shared/roles.service';
 export class RolesComponent implements OnInit {
 
     roles: Role[] = [];
+    subsciption: Subscription;
 
-    constructor(private rolesService: RolesService) {
+    constructor(private rolesService: RolesService, private appService: AppService) {
 
     }
 
     ngOnInit() {
-        this.rolesService.getRoles().subscribe(
+
+        this.loadRoles();
+        this.subsciption = this.appService.on('roles-update').subscribe(
+            () => this.loadRoles()
+            // this.rolesService.getRoles().subscribe(
+            //     roles => this.roles = roles,
+            //     (error: Response) => console.log(error)
+        );
+    }
+
+
+    loadRoles() {
+        return this.rolesService.getRoles().subscribe(
             roles => this.roles = roles,
             (error: Response) => console.log(error)
         );
