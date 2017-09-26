@@ -4,11 +4,14 @@ import {Role} from '../shared/role';
 import {ActivatedRoute, Router} from '@angular/router';
 import {RolesService} from '../shared/roles.service';
 import {AppService} from '../../../shared/app.service';
+import {slideInOutAnimation} from '../../../animations/animate';
 
 @Component({
     selector: 'app-role-form',
     templateUrl: './role-form.component.html',
-    styleUrls: ['./role-form.component.css']
+    styleUrls: ['./role-form.component.css'],
+    animations: [slideInOutAnimation],
+    host: {'[@slideInOutAnimation]': ''}
 })
 export class RoleFormComponent implements OnInit {
 

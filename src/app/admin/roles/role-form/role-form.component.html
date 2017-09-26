@@ -1,19 +1,25 @@
-<div class="col-md-8 col-md-offset-2">
-  <div class="panel panel-default">
-    <div class="panel-heading">
-      <h4>{{title}}</h4>
-    </div>
-    <div class="panel-body">
-      <form [formGroup]="form" (ngSubmit)="onSave(f)" #f="ngForm">
-        <div class="form-group">
-          <label for="name">Name</label>
-          <input type="text" name="name" id="name" class="form-control" [(ngModel)]="role.name" formControlName="name">
+<div class="slide-form">
+    <!--<div class="col-md-8 col-md-offset-2">-->
+        <!--<div class="panel panel-default">-->
+        <div class="panel-heading">
+            <h4>{{title}}</h4>
         </div>
-        <div class="form-group">
-          <button type="submit" class="btn btn-success"
-                  name="button">{{title}}</button>
+        <div class="panel-body">
+            <form [formGroup]="form" (ngSubmit)="onSave(f)" #f="ngForm">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" name="name" id="name" class="form-control" [(ngModel)]="role.name"
+                           formControlName="name">
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-success"
+                            name="button">{{title}}
+                    </button>
+                    <button type="button" class="btn btn-default" routerLink="/admin/roles" name="button">Back</button>
+
+                </div>
+            </form>
         </div>
-      </form>
-    </div>
-  </div>
+        <!--</div>-->
+    <!--</div>-->
 </div>
